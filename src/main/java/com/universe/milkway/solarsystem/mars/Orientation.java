@@ -1,6 +1,6 @@
 package com.universe.milkway.solarsystem.mars;
 
-public enum Direction {
+public enum Orientation {
     N,
     S,
     E,
