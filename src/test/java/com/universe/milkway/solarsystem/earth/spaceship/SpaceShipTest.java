@@ -29,40 +29,40 @@ public class SpaceShipTest {
     @Test
     public void shouldTurnSpaceShipToRight(){
         Position expected = new Position(new Geolocation(3, 3), Orientation.E);
-        Position current = this.spaceShip.turn(Direction.R);
+        Position current = this.spaceShip.turn(Direction.RIGHT);
         assertEquals(expected, current);
     }
 
     @Test
     public void shouldTurnSpaceShipToLeft(){
         Position expected = new Position(new Geolocation(3, 3), Orientation.W);
-        Position current = this.spaceShip.turn(Direction.L);
+        Position current = this.spaceShip.turn(Direction.LEFT);
         assertEquals(expected, current);
     }
 
     @Test
     public void shouldTurnSpaceShipToLeftIn180Degrees(){
         Position expected = new Position(new Geolocation(3, 3), Orientation.S);
-        this.spaceShip.turn(Direction.L);
-        Position current = this.spaceShip.turn(Direction.L);
+        this.spaceShip.turn(Direction.LEFT);
+        Position current = this.spaceShip.turn(Direction.LEFT);
         assertEquals(expected, current);
     }
 
     @Test
     public void shouldTurnSpaceShipToRightIn180Degrees(){
         Position expected = new Position(new Geolocation(3, 3), Orientation.S);
-        this.spaceShip.turn(Direction.R);
-        Position current = this.spaceShip.turn(Direction.R);
+        this.spaceShip.turn(Direction.RIGHT);
+        Position current = this.spaceShip.turn(Direction.RIGHT);
         assertEquals(expected, current);
     }
 
     @Test
     public void shouldTurnSpaceShipToRightIn360Degrees(){
         Position expected = new Position(new Geolocation(3, 3), Orientation.N);
-        this.spaceShip.turn(Direction.R);
-        this.spaceShip.turn(Direction.R);
-        this.spaceShip.turn(Direction.R);
-        this.spaceShip.turn(Direction.R);
+        this.spaceShip.turn(Direction.RIGHT);
+        this.spaceShip.turn(Direction.RIGHT);
+        this.spaceShip.turn(Direction.RIGHT);
+        this.spaceShip.turn(Direction.RIGHT);
 
         Position current = this.spaceShip.position();
         assertEquals(expected, current);

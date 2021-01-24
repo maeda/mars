@@ -4,7 +4,7 @@ public enum Orientation {
     N {
         @Override
         public Orientation change(Direction direction) {
-            return Direction.L.equals(direction) ? Orientation.W : Orientation.E;
+            return Direction.LEFT.equals(direction) ? Orientation.W : Orientation.E;
         }
 
         @Override
@@ -15,7 +15,7 @@ public enum Orientation {
     S {
         @Override
         public Orientation change(Direction direction) {
-            return Direction.L.equals(direction) ? Orientation.E : Orientation.W;
+            return Direction.LEFT.equals(direction) ? Orientation.E : Orientation.W;
         }
 
         @Override
@@ -26,7 +26,7 @@ public enum Orientation {
     E {
         @Override
         public Orientation change(Direction direction) {
-            return Direction.L.equals(direction) ? Orientation.N : Orientation.S;
+            return Direction.LEFT.equals(direction) ? Orientation.N : Orientation.S;
         }
 
         @Override
@@ -37,7 +37,7 @@ public enum Orientation {
     W {
         @Override
         public Orientation change(Direction direction) {
-            return Direction.L.equals(direction) ? Orientation.S : Orientation.N;
+            return Direction.LEFT.equals(direction) ? Orientation.S : Orientation.N;
         }
 
         @Override

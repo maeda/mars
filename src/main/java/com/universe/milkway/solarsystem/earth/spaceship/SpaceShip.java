@@ -55,4 +55,27 @@ public class SpaceShip {
                 .orientation(this.orientation)
                 .build();
     }
+
+    public enum Command {
+        L{
+            @Override
+            public Position execute(SpaceShip spaceShip) {
+                return spaceShip.turn(Direction.LEFT);
+            }
+        },
+        R{
+            @Override
+            public Position execute(SpaceShip spaceShip) {
+                return spaceShip.turn(Direction.RIGHT);
+            }
+        },
+        M{
+            @Override
+            public Position execute(SpaceShip spaceShip) {
+                return spaceShip.move();
+            }
+        };
+
+        public abstract Position execute(SpaceShip spaceShip);
+    }
 }
