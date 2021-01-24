@@ -7,28 +7,43 @@ import com.universe.milkway.solarsystem.mars.Geolocation;
 import com.universe.milkway.solarsystem.mars.Orientation;
 import com.universe.milkway.solarsystem.mars.Position;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.Collection;
+import java.util.LinkedList;
+
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
+@Builder
 public class Spaceship {
     @NonNull
     private Geolocation geolocation;
-    @NonNull
+    @Builder.Default
     @Setter
-    private Geolocation geolocationLimit;
+    private Geolocation geolocationLimit = new Geolocation(Integer.MAX_VALUE, Integer.MAX_VALUE);
     @NonNull
     private Orientation orientation;
+    @NonNull
+    @Builder.Default
+    private final Collection<Command> commands = new LinkedList<>();
 
     public Position position() {
         return Position.builder()
                 .orientation(this.orientation)
                 .geolocation(this.geolocation)
                 .build();
+    }
+
+    public Position run(){
+        return this.commands.stream()
+                .map(command -> command.execute(this))
+                .reduce((first, second) -> second)
+                .orElse(this.position());
     }
 
     public Position turn(Direction direction) {
