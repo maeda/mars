@@ -30,11 +30,4 @@ public class Area {
                 .y(this.end.getY())
                 .build();
     }
-
-    public void land(Spaceship spaceShip) {
-        if(spaceShip == null)
-            throw new AreaException("spaceship should not be null");
-        this.spaceShip = spaceShip;
-        this.spaceShip.setGeolocationLimit(this.end);
-    }
 }

@@ -187,9 +187,7 @@ public class SpaceshipTest {
                 .commands(commands)
                 .build();
 
-        area.land(spaceship);
-
-        Position position = spaceship.run();
+        Position position = spaceship.run(area);
 
         Position expected = new Position(new Geolocation(1, 3), Orientation.N);
 

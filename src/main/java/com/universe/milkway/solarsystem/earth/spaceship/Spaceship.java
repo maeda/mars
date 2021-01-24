@@ -1,7 +1,9 @@
 package com.universe.milkway.solarsystem.earth.spaceship;
 
+import com.universe.milkway.solarsystem.exceptions.AreaException;
 import com.universe.milkway.solarsystem.exceptions.GeolocationNegativeException;
 import com.universe.milkway.solarsystem.exceptions.SpaceshipException;
+import com.universe.milkway.solarsystem.mars.Area;
 import com.universe.milkway.solarsystem.mars.Direction;
 import com.universe.milkway.solarsystem.mars.Geolocation;
 import com.universe.milkway.solarsystem.mars.Orientation;
@@ -39,7 +41,12 @@ public class Spaceship {
                 .build();
     }
 
-    public Position run(){
+    public Position run(Area area){
+        if(area == null)
+            throw new AreaException("Area should not be null");
+
+        this.setGeolocationLimit(area.getEnd());
+
         return this.commands.stream()
                 .map(command -> command.execute(this))
                 .reduce((first, second) -> second)
