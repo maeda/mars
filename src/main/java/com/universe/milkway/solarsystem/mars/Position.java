@@ -1,4 +1,4 @@
-package com.universe.milkway.solarsystem.earth.spaceship;
+package com.universe.milkway.solarsystem.mars;
 
 import com.universe.milkway.solarsystem.mars.Orientation;
 import com.universe.milkway.solarsystem.mars.Geolocation;

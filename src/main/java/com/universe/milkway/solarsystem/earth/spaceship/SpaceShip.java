@@ -3,6 +3,7 @@ package com.universe.milkway.solarsystem.earth.spaceship;
 import com.universe.milkway.solarsystem.mars.Direction;
 import com.universe.milkway.solarsystem.mars.Geolocation;
 import com.universe.milkway.solarsystem.mars.Orientation;
+import com.universe.milkway.solarsystem.mars.Position;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;

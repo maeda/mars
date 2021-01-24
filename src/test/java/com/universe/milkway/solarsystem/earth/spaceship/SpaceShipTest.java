@@ -1,7 +1,6 @@
 package com.universe.milkway.solarsystem.earth.spaceship;
 
-import com.universe.milkway.solarsystem.earth.spaceship.SpaceShip;
-import com.universe.milkway.solarsystem.earth.spaceship.Position;
+import com.universe.milkway.solarsystem.mars.Position;
 import com.universe.milkway.solarsystem.exceptions.GeolocationException;
 import com.universe.milkway.solarsystem.mars.Direction;
 import com.universe.milkway.solarsystem.mars.Orientation;
