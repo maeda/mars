@@ -35,10 +35,7 @@ public class Spaceship {
     private final Collection<Command> commands = new LinkedList<>();
 
     public Position position() {
-        return Position.builder()
-                .orientation(this.orientation)
-                .geolocation(this.geolocation)
-                .build();
+        return copy();
     }
 
     public Position run(Area area){
