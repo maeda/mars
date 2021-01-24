@@ -1,5 +1,6 @@
 package com.universe.milkway.solarsystem.earth.spaceship;
 
+import com.universe.milkway.solarsystem.exceptions.SpaceShipException;
 import com.universe.milkway.solarsystem.mars.Position;
 import com.universe.milkway.solarsystem.exceptions.GeolocationException;
 import com.universe.milkway.solarsystem.mars.Direction;
@@ -131,6 +132,12 @@ public class SpaceShipTest {
     public void shouldNotSetInvalidSpaceShipGeolocationLimit() {
         SpaceShip spaceShip = new SpaceShip(new Geolocation(0, 0), new Geolocation(Integer.MAX_VALUE, Integer.MAX_VALUE), Orientation.N);
         spaceShip.setGeolocationLimit(null);
+    }
+
+    @Test(expected = SpaceShipException.class)
+    public void shouldNotMoveOutsideGeolocationLimit() {
+        SpaceShip spaceShip = new SpaceShip(new Geolocation(3, 3), new Geolocation(3, 3), Orientation.N);
+        spaceShip.move();
     }
 
 }

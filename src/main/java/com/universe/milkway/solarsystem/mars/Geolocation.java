@@ -23,6 +23,10 @@ public class Geolocation {
         this.y = y;
     }
 
+    public boolean isOutside(Geolocation geolocation){
+        return this.x > geolocation.getX() || this.y > geolocation.getY();
+    }
+
     private boolean isNegative(int number) {
         return Integer.signum(number) == -1;
     }
