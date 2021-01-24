@@ -1,3 +1,5 @@
+package com.universe.milkway.solarsystem.earth.spaceship;
+
 import com.universe.milkway.solarsystem.earth.spaceship.SpaceShip;
 import com.universe.milkway.solarsystem.earth.spaceship.Position;
 import com.universe.milkway.solarsystem.exceptions.GeolocationException;
