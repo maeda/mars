@@ -1,7 +1,7 @@
 package com.universe.milkway.solarsystem.earth.spaceship;
 
 import com.universe.milkway.solarsystem.exceptions.GeolocationNegativeException;
-import com.universe.milkway.solarsystem.exceptions.SpaceShipException;
+import com.universe.milkway.solarsystem.exceptions.SpaceshipException;
 import com.universe.milkway.solarsystem.mars.Direction;
 import com.universe.milkway.solarsystem.mars.Geolocation;
 import com.universe.milkway.solarsystem.mars.Orientation;
@@ -15,7 +15,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class SpaceShip {
+public class Spaceship {
     @NonNull
     private Geolocation geolocation;
     @NonNull
@@ -40,11 +40,11 @@ public class SpaceShip {
         try {
             Geolocation geolocation = this.orientation.move(this.geolocation);
             if(geolocation.isOutside(this.geolocationLimit))
-                throw new SpaceShipException("Spaceship has tried to moved outside limits. Limit: " + this.geolocationLimit);
+                throw new SpaceshipException("Spaceship has tried to moved outside limits. Limit: " + this.geolocationLimit);
             this.geolocation = geolocation;
             return copy();
         } catch (GeolocationNegativeException e){
-            throw new SpaceShipException("Spaceship has tried to moved to negative limits.", e);
+            throw new SpaceshipException("Spaceship has tried to moved to negative limits.", e);
         }
 
     }
@@ -59,23 +59,23 @@ public class SpaceShip {
     public enum Command {
         L{
             @Override
-            public Position execute(SpaceShip spaceShip) {
+            public Position execute(Spaceship spaceShip) {
                 return spaceShip.turn(Direction.LEFT);
             }
         },
         R{
             @Override
-            public Position execute(SpaceShip spaceShip) {
+            public Position execute(Spaceship spaceShip) {
                 return spaceShip.turn(Direction.RIGHT);
             }
         },
         M{
             @Override
-            public Position execute(SpaceShip spaceShip) {
+            public Position execute(Spaceship spaceShip) {
                 return spaceShip.move();
             }
         };
 
-        public abstract Position execute(SpaceShip spaceShip);
+        public abstract Position execute(Spaceship spaceShip);
     }
 }

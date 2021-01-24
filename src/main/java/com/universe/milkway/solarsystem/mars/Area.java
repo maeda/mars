@@ -1,6 +1,6 @@
 package com.universe.milkway.solarsystem.mars;
 
-import com.universe.milkway.solarsystem.earth.spaceship.SpaceShip;
+import com.universe.milkway.solarsystem.earth.spaceship.Spaceship;
 import com.universe.milkway.solarsystem.exceptions.AreaException;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,7 +22,7 @@ public class Area {
     @NonNull
     private final Geolocation end;
 
-    private SpaceShip spaceShip;
+    private Spaceship spaceShip;
 
     public Geolocation getEnd(){
         return Geolocation.builder()
@@ -31,7 +31,7 @@ public class Area {
                 .build();
     }
 
-    public void add(SpaceShip spaceShip) {
+    public void land(Spaceship spaceShip) {
         if(spaceShip == null)
             throw new AreaException("spaceship should not be null");
         this.spaceShip = spaceShip;

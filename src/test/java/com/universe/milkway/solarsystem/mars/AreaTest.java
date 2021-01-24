@@ -18,7 +18,7 @@ public class AreaTest {
     public void shouldFailIfAddInvalidSpaceship(){
         Area area = new Area(new Geolocation(0, 0), new Geolocation(5, 5));
 
-        area.add(null);
+        area.land(null);
     }
 
 }

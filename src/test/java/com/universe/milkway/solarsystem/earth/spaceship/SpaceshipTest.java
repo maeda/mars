@@ -1,6 +1,6 @@
 package com.universe.milkway.solarsystem.earth.spaceship;
 
-import com.universe.milkway.solarsystem.exceptions.SpaceShipException;
+import com.universe.milkway.solarsystem.exceptions.SpaceshipException;
 import com.universe.milkway.solarsystem.mars.Position;
 import com.universe.milkway.solarsystem.mars.Direction;
 import com.universe.milkway.solarsystem.mars.Orientation;
@@ -10,17 +10,17 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class SpaceShipTest {
+public class SpaceshipTest {
 
-    private SpaceShip spaceShip;
+    private Spaceship spaceShip;
 
     @Before
     public void setUp() {
-        this.spaceShip = new SpaceShip(new Geolocation(3, 3), new Geolocation(4, 4), Orientation.N);
+        this.spaceShip = new Spaceship(new Geolocation(3, 3), new Geolocation(4, 4), Orientation.N);
     }
 
     @Test
-    public void shouldSpaceShipReturnItsPosition(){
+    public void shouldSpaceshipReturnItsPosition(){
         Position position = this.spaceShip.position();
         Position expected = new Position(new Geolocation(3, 3), Orientation.N);
         assertEquals(expected, position);
@@ -34,14 +34,14 @@ public class SpaceShipTest {
     }
 
     @Test
-    public void shouldTurnSpaceShipToLeft(){
+    public void shouldTurnSpaceshipToLeft(){
         Position expected = new Position(new Geolocation(3, 3), Orientation.W);
         Position current = this.spaceShip.turn(Direction.LEFT);
         assertEquals(expected, current);
     }
 
     @Test
-    public void shouldTurnSpaceShipToLeftIn180Degrees(){
+    public void shouldTurnSpaceshipToLeftIn180Degrees(){
         Position expected = new Position(new Geolocation(3, 3), Orientation.S);
         this.spaceShip.turn(Direction.LEFT);
         Position current = this.spaceShip.turn(Direction.LEFT);
@@ -49,7 +49,7 @@ public class SpaceShipTest {
     }
 
     @Test
-    public void shouldTurnSpaceShipToRightIn180Degrees(){
+    public void shouldTurnSpaceshipToRightIn180Degrees(){
         Position expected = new Position(new Geolocation(3, 3), Orientation.S);
         this.spaceShip.turn(Direction.RIGHT);
         Position current = this.spaceShip.turn(Direction.RIGHT);
@@ -57,7 +57,7 @@ public class SpaceShipTest {
     }
 
     @Test
-    public void shouldTurnSpaceShipToRightIn360Degrees(){
+    public void shouldTurnSpaceshipToRightIn360Degrees(){
         Position expected = new Position(new Geolocation(3, 3), Orientation.N);
         this.spaceShip.turn(Direction.RIGHT);
         this.spaceShip.turn(Direction.RIGHT);
@@ -78,7 +78,7 @@ public class SpaceShipTest {
 
     @Test
     public void shouldSpaceshipMoveTowardsSouth() {
-        SpaceShip spaceShip = new SpaceShip(new Geolocation(3, 3), new Geolocation(4, 4), Orientation.S);
+        Spaceship spaceShip = new Spaceship(new Geolocation(3, 3), new Geolocation(4, 4), Orientation.S);
         Position expected = new Position(new Geolocation(3, 2), Orientation.S);
         Position current = spaceShip.move();
 
@@ -87,7 +87,7 @@ public class SpaceShipTest {
 
     @Test
     public void shouldSpaceshipMoveTowardsEast() {
-        SpaceShip spaceShip = new SpaceShip(new Geolocation(3, 3), new Geolocation(4, 4), Orientation.E);
+        Spaceship spaceShip = new Spaceship(new Geolocation(3, 3), new Geolocation(4, 4), Orientation.E);
         Position expected = new Position(new Geolocation(4, 3), Orientation.E);
         Position current = spaceShip.move();
 
@@ -96,64 +96,64 @@ public class SpaceShipTest {
 
     @Test
     public void shouldSpaceshipMoveTowardsWest() {
-        SpaceShip spaceShip = new SpaceShip(new Geolocation(3, 3), new Geolocation(4, 4), Orientation.W);
+        Spaceship spaceShip = new Spaceship(new Geolocation(3, 3), new Geolocation(4, 4), Orientation.W);
         Position expected = new Position(new Geolocation(2, 3), Orientation.W);
         Position current = spaceShip.move();
 
         assertEquals(expected, current);
     }
 
-    @Test(expected = SpaceShipException.class)
+    @Test(expected = SpaceshipException.class)
     public void shouldNotSpaceshipMoveTowardsNegativeSouth() {
-        SpaceShip spaceShip = new SpaceShip(new Geolocation(0, 0), new Geolocation(4, 4), Orientation.S);
+        Spaceship spaceShip = new Spaceship(new Geolocation(0, 0), new Geolocation(4, 4), Orientation.S);
         spaceShip.move();
     }
 
-    @Test(expected = SpaceShipException.class)
+    @Test(expected = SpaceshipException.class)
     public void shouldNotSpaceshipMoveTowardsNegativeWest() {
-        SpaceShip spaceShip = new SpaceShip(new Geolocation(0, 0), new Geolocation(4, 4), Orientation.W);
+        Spaceship spaceShip = new Spaceship(new Geolocation(0, 0), new Geolocation(4, 4), Orientation.W);
         spaceShip.move();
     }
 
     @Test(expected = NullPointerException.class)
     public void shouldNotSpaceshipAcceptInvalidGeolocation() {
-        SpaceShip spaceShip = new SpaceShip(null,null, Orientation.W);
+        Spaceship spaceShip = new Spaceship(null,null, Orientation.W);
         spaceShip.move();
     }
 
     @Test(expected = NullPointerException.class)
     public void shouldNotSpaceshipAcceptInvalidOrientation() {
-        SpaceShip spaceShip = new SpaceShip(new Geolocation(0, 0), null, null);
+        Spaceship spaceShip = new Spaceship(new Geolocation(0, 0), null, null);
         spaceShip.move();
     }
 
     @Test(expected = NullPointerException.class)
     public void shouldNotSetInvalidSpaceShipGeolocationLimit() {
-        SpaceShip spaceShip = new SpaceShip(new Geolocation(0, 0), new Geolocation(Integer.MAX_VALUE, Integer.MAX_VALUE), Orientation.N);
+        Spaceship spaceShip = new Spaceship(new Geolocation(0, 0), new Geolocation(Integer.MAX_VALUE, Integer.MAX_VALUE), Orientation.N);
         spaceShip.setGeolocationLimit(null);
     }
 
-    @Test(expected = SpaceShipException.class)
+    @Test(expected = SpaceshipException.class)
     public void shouldNotMoveOutsideNorthGeolocationLimit() {
-        SpaceShip spaceShip = new SpaceShip(new Geolocation(3, 3), new Geolocation(3, 3), Orientation.N);
+        Spaceship spaceShip = new Spaceship(new Geolocation(3, 3), new Geolocation(3, 3), Orientation.N);
         spaceShip.move();
     }
 
-    @Test(expected = SpaceShipException.class)
+    @Test(expected = SpaceshipException.class)
     public void shouldNotMoveOutsideEastGeolocationLimit() {
-        SpaceShip spaceShip = new SpaceShip(new Geolocation(3, 3), new Geolocation(3, 3), Orientation.E);
+        Spaceship spaceShip = new Spaceship(new Geolocation(3, 3), new Geolocation(3, 3), Orientation.E);
         spaceShip.move();
     }
 
-    @Test(expected = SpaceShipException.class)
+    @Test(expected = SpaceshipException.class)
     public void shouldNotMoveOutsideWestGeolocationLimit() {
-        SpaceShip spaceShip = new SpaceShip(new Geolocation(0, 3), new Geolocation(3, 3), Orientation.W);
+        Spaceship spaceShip = new Spaceship(new Geolocation(0, 3), new Geolocation(3, 3), Orientation.W);
         spaceShip.move();
     }
 
-    @Test(expected = SpaceShipException.class)
+    @Test(expected = SpaceshipException.class)
     public void shouldNotMoveOutsideSouthGeolocationLimit() {
-        SpaceShip spaceShip = new SpaceShip(new Geolocation(0, 0), new Geolocation(3, 3), Orientation.S);
+        Spaceship spaceShip = new Spaceship(new Geolocation(0, 0), new Geolocation(3, 3), Orientation.S);
         spaceShip.move();
     }
 
