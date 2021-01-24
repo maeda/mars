@@ -1,5 +1,6 @@
 package com.universe.milkway.solarsystem.earth.spaceship;
 
+import com.universe.milkway.solarsystem.exceptions.GeolocationNegativeException;
 import com.universe.milkway.solarsystem.exceptions.SpaceShipException;
 import com.universe.milkway.solarsystem.mars.Direction;
 import com.universe.milkway.solarsystem.mars.Geolocation;
@@ -36,11 +37,16 @@ public class SpaceShip {
     }
 
     public Position move() {
-        Geolocation geolocation = this.orientation.move(this.geolocation);
-        if(geolocation.isOutside(this.geolocationLimit))
-            throw new SpaceShipException("Spaceship has tried to moved outside limits. Limit: " + this.geolocationLimit);
-        this.geolocation = geolocation;
-        return copy();
+        try {
+            Geolocation geolocation = this.orientation.move(this.geolocation);
+            if(geolocation.isOutside(this.geolocationLimit))
+                throw new SpaceShipException("Spaceship has tried to moved outside limits. Limit: " + this.geolocationLimit);
+            this.geolocation = geolocation;
+            return copy();
+        } catch (GeolocationNegativeException e){
+            throw new SpaceShipException("Spaceship has tried to moved to negative limits.", e);
+        }
+
     }
 
     private Position copy() {

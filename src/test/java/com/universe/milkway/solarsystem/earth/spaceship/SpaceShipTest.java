@@ -2,7 +2,6 @@ package com.universe.milkway.solarsystem.earth.spaceship;
 
 import com.universe.milkway.solarsystem.exceptions.SpaceShipException;
 import com.universe.milkway.solarsystem.mars.Position;
-import com.universe.milkway.solarsystem.exceptions.GeolocationException;
 import com.universe.milkway.solarsystem.mars.Direction;
 import com.universe.milkway.solarsystem.mars.Orientation;
 import com.universe.milkway.solarsystem.mars.Geolocation;
@@ -104,13 +103,13 @@ public class SpaceShipTest {
         assertEquals(expected, current);
     }
 
-    @Test(expected = GeolocationException.class)
+    @Test(expected = SpaceShipException.class)
     public void shouldNotSpaceshipMoveTowardsNegativeSouth() {
         SpaceShip spaceShip = new SpaceShip(new Geolocation(0, 0), new Geolocation(4, 4), Orientation.S);
         spaceShip.move();
     }
 
-    @Test(expected = GeolocationException.class)
+    @Test(expected = SpaceShipException.class)
     public void shouldNotSpaceshipMoveTowardsNegativeWest() {
         SpaceShip spaceShip = new SpaceShip(new Geolocation(0, 0), new Geolocation(4, 4), Orientation.W);
         spaceShip.move();
@@ -135,8 +134,26 @@ public class SpaceShipTest {
     }
 
     @Test(expected = SpaceShipException.class)
-    public void shouldNotMoveOutsideGeolocationLimit() {
+    public void shouldNotMoveOutsideNorthGeolocationLimit() {
         SpaceShip spaceShip = new SpaceShip(new Geolocation(3, 3), new Geolocation(3, 3), Orientation.N);
+        spaceShip.move();
+    }
+
+    @Test(expected = SpaceShipException.class)
+    public void shouldNotMoveOutsideEastGeolocationLimit() {
+        SpaceShip spaceShip = new SpaceShip(new Geolocation(3, 3), new Geolocation(3, 3), Orientation.E);
+        spaceShip.move();
+    }
+
+    @Test(expected = SpaceShipException.class)
+    public void shouldNotMoveOutsideWestGeolocationLimit() {
+        SpaceShip spaceShip = new SpaceShip(new Geolocation(0, 3), new Geolocation(3, 3), Orientation.W);
+        spaceShip.move();
+    }
+
+    @Test(expected = SpaceShipException.class)
+    public void shouldNotMoveOutsideSouthGeolocationLimit() {
+        SpaceShip spaceShip = new SpaceShip(new Geolocation(0, 0), new Geolocation(3, 3), Orientation.S);
         spaceShip.move();
     }
 

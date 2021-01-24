@@ -1,6 +1,6 @@
 package com.universe.milkway.solarsystem.mars;
 
-import com.universe.milkway.solarsystem.exceptions.GeolocationException;
+import com.universe.milkway.solarsystem.exceptions.GeolocationNegativeException;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -16,9 +16,9 @@ public class Geolocation {
 
     public Geolocation(final int x, final int y){
         if(isNegative(x))
-            throw new GeolocationException("Negative x is not allowed");
+            throw new GeolocationNegativeException("Negative x is not allowed");
         if(isNegative(y))
-            throw new GeolocationException("Negative y is not allowed");
+            throw new GeolocationNegativeException("Negative y is not allowed");
         this.x = x;
         this.y = y;
     }
