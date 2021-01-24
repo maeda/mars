@@ -1,8 +1,10 @@
 package com.universe.milkway.solarsystem.mars;
 
-import com.universe.milkway.solarsystem.mars.Orientation;
-import com.universe.milkway.solarsystem.mars.Geolocation;
-import lombok.*;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 @RequiredArgsConstructor
 @EqualsAndHashCode
