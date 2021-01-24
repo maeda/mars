@@ -16,7 +16,7 @@ public class SpaceShipTest {
 
     @Before
     public void setUp() {
-        this.spaceShip = new SpaceShip(new Geolocation(3, 3), Orientation.N);
+        this.spaceShip = new SpaceShip(new Geolocation(3, 3), new Geolocation(4, 4), Orientation.N);
     }
 
     @Test
@@ -78,7 +78,7 @@ public class SpaceShipTest {
 
     @Test
     public void shouldSpaceshipMoveTowardsSouth() {
-        SpaceShip spaceShip = new SpaceShip(new Geolocation(3, 3), Orientation.S);
+        SpaceShip spaceShip = new SpaceShip(new Geolocation(3, 3), new Geolocation(4, 4), Orientation.S);
         Position expected = new Position(new Geolocation(3, 2), Orientation.S);
         Position current = spaceShip.move();
 
@@ -87,7 +87,7 @@ public class SpaceShipTest {
 
     @Test
     public void shouldSpaceshipMoveTowardsEast() {
-        SpaceShip spaceShip = new SpaceShip(new Geolocation(3, 3), Orientation.E);
+        SpaceShip spaceShip = new SpaceShip(new Geolocation(3, 3), new Geolocation(4, 4), Orientation.E);
         Position expected = new Position(new Geolocation(4, 3), Orientation.E);
         Position current = spaceShip.move();
 
@@ -96,7 +96,7 @@ public class SpaceShipTest {
 
     @Test
     public void shouldSpaceshipMoveTowardsWest() {
-        SpaceShip spaceShip = new SpaceShip(new Geolocation(3, 3), Orientation.W);
+        SpaceShip spaceShip = new SpaceShip(new Geolocation(3, 3), new Geolocation(4, 4), Orientation.W);
         Position expected = new Position(new Geolocation(2, 3), Orientation.W);
         Position current = spaceShip.move();
 
@@ -105,26 +105,32 @@ public class SpaceShipTest {
 
     @Test(expected = GeolocationException.class)
     public void shouldNotSpaceshipMoveTowardsNegativeSouth() {
-        SpaceShip spaceShip = new SpaceShip(new Geolocation(0, 0), Orientation.S);
+        SpaceShip spaceShip = new SpaceShip(new Geolocation(0, 0), new Geolocation(4, 4), Orientation.S);
         spaceShip.move();
     }
 
     @Test(expected = GeolocationException.class)
     public void shouldNotSpaceshipMoveTowardsNegativeWest() {
-        SpaceShip spaceShip = new SpaceShip(new Geolocation(0, 0), Orientation.W);
+        SpaceShip spaceShip = new SpaceShip(new Geolocation(0, 0), new Geolocation(4, 4), Orientation.W);
         spaceShip.move();
     }
 
     @Test(expected = NullPointerException.class)
     public void shouldNotSpaceshipAcceptInvalidGeolocation() {
-        SpaceShip spaceShip = new SpaceShip(null, Orientation.W);
+        SpaceShip spaceShip = new SpaceShip(null,null, Orientation.W);
         spaceShip.move();
     }
 
     @Test(expected = NullPointerException.class)
     public void shouldNotSpaceshipAcceptInvalidOrientation() {
-        SpaceShip spaceShip = new SpaceShip(new Geolocation(0, 0), null);
+        SpaceShip spaceShip = new SpaceShip(new Geolocation(0, 0), null, null);
         spaceShip.move();
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void shouldNotSetInvalidSpaceShipGeolocationLimit() {
+        SpaceShip spaceShip = new SpaceShip(new Geolocation(0, 0), new Geolocation(Integer.MAX_VALUE, Integer.MAX_VALUE), Orientation.N);
+        spaceShip.setGeolocationLimit(null);
     }
 
 }

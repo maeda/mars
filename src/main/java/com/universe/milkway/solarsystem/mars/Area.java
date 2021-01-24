@@ -35,5 +35,6 @@ public class Area {
         if(spaceShip == null)
             throw new AreaException("spaceship should not be null");
         this.spaceShip = spaceShip;
+        this.spaceShip.setGeolocationLimit(this.end);
     }
 }

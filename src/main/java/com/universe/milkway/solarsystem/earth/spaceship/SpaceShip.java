@@ -7,6 +7,7 @@ import com.universe.milkway.solarsystem.mars.Position;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
+import lombok.Setter;
 import lombok.ToString;
 
 @AllArgsConstructor
@@ -15,6 +16,9 @@ import lombok.ToString;
 public class SpaceShip {
     @NonNull
     private Geolocation geolocation;
+    @NonNull
+    @Setter
+    private Geolocation geolocationLimit;
     @NonNull
     private Orientation orientation;
 
