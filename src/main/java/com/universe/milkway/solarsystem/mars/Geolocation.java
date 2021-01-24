@@ -23,6 +23,13 @@ public class Geolocation {
         this.y = y;
     }
 
+    public static Geolocation from(Geolocation geolocation) {
+        return Geolocation.builder()
+                .x(geolocation.getX())
+                .y(geolocation.getY())
+                .build();
+    }
+
     public boolean isOutside(Geolocation geolocation){
         return this.x > geolocation.getX() || this.y > geolocation.getY();
     }

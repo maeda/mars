@@ -73,7 +73,7 @@ public class Spaceship {
 
     private Position copy() {
         return Position.builder()
-                .geolocation(this.geolocation)
+                .geolocation(Geolocation.from(this.geolocation))
                 .orientation(this.orientation)
                 .build();
     }
