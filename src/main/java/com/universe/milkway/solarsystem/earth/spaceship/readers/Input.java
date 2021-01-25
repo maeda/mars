@@ -1,6 +1,7 @@
-package com.universe.milkway.solarsystem.earth.spaceship;
+package com.universe.milkway.solarsystem.earth.spaceship.readers;
 
 
+import com.universe.milkway.solarsystem.earth.spaceship.Spaceship;
 import com.universe.milkway.solarsystem.mars.Geolocation;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

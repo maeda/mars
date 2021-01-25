@@ -1,5 +1,6 @@
-package com.universe.milkway.solarsystem.earth.spaceship;
+package com.universe.milkway.solarsystem.earth.spaceship.readers;
 
+import com.universe.milkway.solarsystem.earth.spaceship.Spaceship;
 import com.universe.milkway.solarsystem.earth.spaceship.parsers.Parser;
 import com.universe.milkway.solarsystem.exceptions.InputParserException;
 import com.universe.milkway.solarsystem.mars.Geolocation;

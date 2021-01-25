@@ -1,10 +1,13 @@
-package com.universe.milkway.solarsystem.earth.spaceship;
+package com.universe.milkway.solarsystem.earth.spaceship.readers;
 
+import com.universe.milkway.solarsystem.earth.spaceship.Spaceship;
 import com.universe.milkway.solarsystem.earth.spaceship.parsers.LandSizeParser;
 import com.universe.milkway.solarsystem.earth.spaceship.parsers.Parser;
 import com.universe.milkway.solarsystem.earth.spaceship.parsers.SpaceshipCommandParser;
 import com.universe.milkway.solarsystem.earth.spaceship.parsers.SpaceshipParser;
 import com.universe.milkway.solarsystem.earth.spaceship.parsers.SpaceshipPositionParser;
+import com.universe.milkway.solarsystem.earth.spaceship.readers.Input;
+import com.universe.milkway.solarsystem.earth.spaceship.readers.InputReader;
 import com.universe.milkway.solarsystem.mars.Geolocation;
 import com.universe.milkway.solarsystem.mars.Orientation;
 import org.junit.Test;
