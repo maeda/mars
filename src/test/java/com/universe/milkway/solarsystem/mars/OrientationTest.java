@@ -15,7 +15,7 @@ public class OrientationTest {
     }
 
     @Test
-    public void shouldPointToSouthgWhenReceive2LeftCommands() {
+    public void shouldPointToSouthWhenReceive2LeftCommands() {
         Orientation initial = Orientation.N;
         Orientation current = initial.change(Direction.LEFT);
         current = current.change(Direction.LEFT);
